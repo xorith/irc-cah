@@ -15,4 +15,5 @@ module.exports = function(app) {
     app.cmd('pause', '', games.pause);
     app.cmd('resume', '', games.resume);
     app.cmd('pick', '', games.pick);
+    app.cmd('help', '', games.help);
 };

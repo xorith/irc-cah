@@ -669,6 +669,7 @@ var Game = function Game(channel, client, config, cmdArgs) {
                 cards += c.bold(' [' + index + '] ') + card.value;
             }, this);
             self.notice(player.nick, 'Your cards are:' + cards);
+            self.notice(player.nick, "Use '!play <card number>' to play a card.");
         }
     };
 
