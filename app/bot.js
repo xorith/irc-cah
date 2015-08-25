@@ -6,20 +6,14 @@ var _ = require('underscore'),
     msgs = [];
 
 
-// Fix for channels with keys
-// Source: http://stackoverflow.com/questions/5440275/search-an-array-return-partial-matches    
-(function() {
-    Array.implement({
-        getIndexes: function(what) {
-            var indexes = [];
-            this.each(function(el, index) {
-                if (el.charAt(0) == what)
-                    indexes.push(index);
-            });
-            return indexes;
-        }
-    });
-})();
+
+function isValidChannel(needle, haystack) {
+    while(haystack.length > 0) {
+        if(haystack.pop().indexOf(needle) >= 0)
+            return true;
+    }
+    return false;
+}
 
 function checkUserMode(message, mode) {
     return true;
@@ -85,7 +79,7 @@ exports.init = function () {
         }
         // build callback options
 
-        if (config.clientOptions.channels.getIndexes(to).length > 0) {
+        if (isValidChannel(to,config.clientOptions.channels)) {
             // public commands
             _.each(commands, function (c) {
                 if (cmd === c.cmd) {
