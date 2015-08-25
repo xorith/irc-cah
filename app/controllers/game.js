@@ -122,7 +122,7 @@ var Game = function Game(channel, client, config, cmdArgs) {
         delete self.table;
 
         // set topic
-        self.setTopic(c.bold.yellow('No game is running. Type !start to begin one!'));
+        self.setTopic(c.bold.cyan('No game is running. Type !start to begin one!'));
     };
 
     /**

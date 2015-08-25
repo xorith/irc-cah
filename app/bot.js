@@ -54,10 +54,12 @@ exports.init = function () {
         // parse command
         var cmdArr = text.match(/^[\.|!](\w+)\s?(.*)$/);
         if (!cmdArr || cmdArr.length <= 1) {
+            console.log('Command not found');
             // command not found
             return false;
         }
         var cmd = cmdArr[1];
+        console.log('Parsing command: ' + cmd);
         // parse arguments
         var cmdArgs = [];
         if (cmdArr.length > 2) {
