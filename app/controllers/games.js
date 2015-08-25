@@ -307,6 +307,7 @@ var Games = function Games() {
         client.say(channel, '!pick - Alias for !play and !winner commands.');        
     };
     
+
     self.nocolor = function(client, message, cmdArgs) {
         var channel = message.args[0],
             user = message.user,
@@ -314,7 +315,7 @@ var Games = function Games() {
             game = self.findGame(channel);
 
         if (typeof game === 'undefined'){
-            client.say(channel, 'No game running. Start the game by typing !start.');
+            client.say(channel, 'No game running. You cannot set color preference until a game is running.');
         } else {
             var player = game.getPlayer({user: user, hostname: hostname});
              
@@ -328,15 +329,12 @@ var Games = function Games() {
             }
         }
     };
-    
+
     self.kill = function(client, message, cmdArgs) {
         var channel = message.args[0],
             user = message.user,
-            hostname = message.host,
-            game = self.findGame(channel),
-            player = game.getPlayer({user: user, hostname: hostname});
-
-        game.stop(player, false);
+            hostname = message.host;
+            
         client.quit("Killed by " + user);
         exit();
     };
