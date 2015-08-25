@@ -85,8 +85,6 @@ exports.init = function () {
         }
         // build callback options
 
-        // Handle channel keys
-        var channels = 
         if (config.clientOptions.channels.getIndexes(to).length > 0) {
             // public commands
             _.each(commands, function (c) {
