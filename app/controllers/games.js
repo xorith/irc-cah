@@ -327,7 +327,7 @@ var Games = function Games() {
                 client.notify(player.nick, c.rainbow("Colors enabled again!"));
             }
         }
-    }
+    };
     
     self.kill = function(client, message, cmdArgs) {
         var channel = message.args[0],
@@ -339,7 +339,7 @@ var Games = function Games() {
         game.stop(player, false);
         client.quit("Killed by " + user);
         exit();
-    }
+    };
 };
 
 exports = module.exports = Games;
