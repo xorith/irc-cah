@@ -16,5 +16,5 @@ module.exports = function(app) {
     app.cmd('resume', '', games.resume);
     app.cmd('pick', '', games.pick);
     app.cmd('help', '', games.help);
-    app.cmd('nocolor', '', 'games.nocolor);
+    app.cmd('nocolor', '', games.nocolor);
 };
