@@ -4,7 +4,7 @@ module.exports = function(app) {
     var games = new Games();
     app.cmd('start', '', games.start);
     app.cmd('stop', 'o', games.stop);
-    app.cmd('kill', 'o', games.kill);
+    app.msg('kill', 'o', games.kill);
     app.cmd('join', '', games.join);
     app.cmd('quit', '', games.quit);
     app.cmd('cards', '', games.cards);
