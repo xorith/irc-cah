@@ -17,8 +17,11 @@ function isValidChannel(needle, haystack) {
 
 // Quick hack for now
 function checkUserMode(message, from, mode) {
+    if(mode != "o")
+        return true;
     if(config.adminNick.toLowerCase().indexOf(from.toLowerCase()) >= 0)
         return true;
+    
     return false;
 }
 
