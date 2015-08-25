@@ -311,16 +311,21 @@ var Games = function Games() {
         var channel = message.args[0],
             user = message.user,
             hostname = message.host,
-            game = self.findGame(channel),
-            player = game.getPlayer({user: user, hostname: hostname});
-         
-        if(player.colors) {
-            player.colors = false;
-            client.notify(player.nick, "Colors have been turned off for you.");
-        }
-        else {
-            player.colors = true;
-            client.notify(player.nick, c.rainbow("Colors enabled again!"));
+            game = self.findGame(channel);
+
+        if (typeof game === 'undefined'){
+            client.say(channel, 'No game running. Start the game by typing !start.');
+        } else {
+            var player = game.getPlayer({user: user, hostname: hostname});
+             
+            if(player.colors) {
+                player.colors = false;
+                client.notify(player.nick, "Colors have been turned off for you.");
+            }
+            else {
+                player.colors = true;
+                client.notify(player.nick, c.rainbow("Colors enabled again!"));
+            }
         }
     }
     
