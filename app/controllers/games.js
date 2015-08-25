@@ -290,21 +290,22 @@ var Games = function Games() {
      * @param cmdArgs
      */
     self.help = function(client, message, cmdArgs) {
-        var channel = message.args[0];
-        client.say(channel, 'Cards Against Humanity!');
-        client.say(channel, '!start # - Start a new game. Optional parameter can by used to set a point limit for the game (e.g. !start 10 to play until one player has 10 points.)');
-        client.say(channel, '!stop - Stop the currently running game.');
-        client.say(channel, '!pause - Pause the currently running game.');
-        client.say(channel, '!resume - Resume a paused game.');
-        client.say(channel, '!join - Join to the currently running game.');
-        client.say(channel, '!quit - Quit from the game.');
-        client.say(channel, '!cards - Show the cards you have in your hand.');
-        client.say(channel, '!play # (#) - Play a card from your hand, # being the number of the card in the list. Play as many numbers separated by spaces as the current card required.');
-        client.say(channel, '!winner # - Pick a winner of the round, # being the number of the entry in the list. Only for the current card czar.');
-        client.say(channel, '!points - Show players\' awesome points in the current game.');
-        client.say(channel, '!list - List players in the current game.');
-        client.say(channel, '!status - Show current status of the game. Output depends on the state of the game (e.g. when waiting for players to play, you can check who hasn\'t played yet)');
-        client.say(channel, '!pick - Alias for !play and !winner commands.');        
+        var channel = message.args[0],
+            user = message.user;
+        client.notice(user, 'Cards Against Humanity!');
+        client.notice(user, '!start # - Start a new game. Optional parameter can by used to set a point limit for the game (e.g. !start 10 to play until one player has 10 points.)');
+        client.notice(user, '!stop - Stop the currently running game.');
+        client.notice(user, '!pause - Pause the currently running game.');
+        client.notice(user, '!resume - Resume a paused game.');
+        client.notice(user, '!join - Join to the currently running game.');
+        client.notice(user, '!quit - Quit from the game.');
+        client.notice(user, '!cards - Show the cards you have in your hand.');
+        client.notice(user, '!play # (#) - Play a card from your hand, # being the number of the card in the list. Play as many numbers separated by spaces as the current card required.');
+        client.notice(user, '!winner # - Pick a winner of the round, # being the number of the entry in the list. Only for the current card czar.');
+        client.notice(user, '!points - Show players\' awesome points in the current game.');
+        client.notice(user, '!list - List players in the current game.');
+        client.notice(user, '!status - Show current status of the game. Output depends on the state of the game (e.g. when waiting for players to play, you can check who hasn\'t played yet)');
+        client.notice(user, '!pick - Alias for !play and !winner commands.');        
     };
     
 
@@ -315,17 +316,17 @@ var Games = function Games() {
             game = self.findGame(channel);
 
         if (typeof game === 'undefined'){
-            client.say(channel, 'No game running. You cannot set color preference until a game is running.');
+            client.notice(user, 'No game running. You cannot set color preference until a game is running.');
         } else {
             var player = game.getPlayer({user: user, hostname: hostname});
              
             if(player.colors) {
                 player.colors = false;
-                client.notify(player.nick, "Colors have been turned off for you.");
+                client.notice(player.nick, "Colors have been turned off for you.");
             }
             else {
                 player.colors = true;
-                client.notify(player.nick, c.rainbow("Colors enabled again!"));
+                client.notice(player.nick, c.rainbow("Colors enabled again!"));
             }
         }
     };
