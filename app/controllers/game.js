@@ -344,7 +344,7 @@ var Game = function Game(channel, client, config, cmdArgs) {
             self.say(player.nick + ': Can\'t play at the moment.');
         } else if (typeof player !== 'undefined') {
             if (player.isCzar === true) {
-                self.say(player.nick + ': You are the card czar. The czar does not play. The czar makes other people do his dirty work.');
+                self.say(player.nick + ': You are the card czar. The czar does not play. The czar makes other people do her dirty work.');
             } else {
                 if (player.hasPlayed === true) {
                     self.say(player.nick + ': You have already played on this round.');
@@ -736,7 +736,7 @@ var Game = function Game(channel, client, config, cmdArgs) {
         // construct new topic
         var newTopic = topic;
         if (typeof config.topicBase !== 'undefined') {
-            newTopic = topic + ' ' + config.topicBase;
+            newTopic = config.topicBase + ' ' + topic;
         }
 
         // set it

@@ -12,6 +12,7 @@ var Player = function Player(nick, user, hostname) {
     self.isCzar = false;
     self.points = 0;
     self.inactiveRounds = 0;
+    self.colors = true;
 };
 
 /**

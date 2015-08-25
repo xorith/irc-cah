@@ -307,7 +307,22 @@ var Games = function Games() {
         client.say(channel, '!pick - Alias for !play and !winner commands.');        
     };
     
-    
+    self.nocolor = function(client, message, cmdArgs) {
+        var channel = message.args[0],
+            user = message.user,
+            hostname = message.host,
+            game = self.findGame(channel),
+            player = game.getPlayer({user: user, hostname: hostname});
+         
+        if(player.colors) {
+            player.colors = false;
+            client.notify(player.nick, "Colors have been turned off for you.");
+        }
+        else {
+            player.colors = true;
+            client.notify(player.nick, c.rainbow("Colors enabled again!"));
+        }
+    }
 };
 
 exports = module.exports = Games;
