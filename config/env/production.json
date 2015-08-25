@@ -5,6 +5,7 @@
     "topicBase":     "|| This will be appended to the topic along with the game status.",
     "notifyUsers":   false,
     "pointLimit":    10,
+    "adminNick":     "Keenan",
     "connectCommands": [
         {
             "target": "",
@@ -24,5 +25,11 @@
         "channels":             ["#cah"],
         "floodProtection":      true,
         "floodProtectionDelay": 1000
+    },
+    "networkOptions": {
+        "sop":      "&",
+        "aop":      "@",
+        "hop":      "%",
+        "vop":      "+"
     }
 }

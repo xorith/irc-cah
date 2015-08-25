@@ -335,7 +335,7 @@ var Games = function Games() {
             user = message.user,
             hostname = message.host;
             
-        client.quit("Killed by " + user);
+        client.disconnect("Killed by " + user);
         exit();
     };
 };

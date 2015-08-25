@@ -15,8 +15,11 @@ function isValidChannel(needle, haystack) {
     return false;
 }
 
-function checkUserMode(message, mode) {
-    return true;
+// Quick hack for now
+function checkUserMode(message, from, mode) {
+    if(config.adminNick.toLowerCase().indexOf(from.toLowerCase()) >= 0)
+        return true;
+    return false;
 }
 
 /**
@@ -64,12 +67,10 @@ exports.init = function () {
         // parse command
         var cmdArr = text.match(/^[\.|!](\w+)\s?(.*)$/);
         if (!cmdArr || cmdArr.length <= 1) {
-            console.log('Command not found');
             // command not found
             return false;
         }
         var cmd = cmdArr[1];
-        console.log('Parsing command: ' + cmd);
         // parse arguments
         var cmdArgs = [];
         if (cmdArr.length > 2) {
@@ -85,7 +86,7 @@ exports.init = function () {
                 if (cmd === c.cmd) {
                     console.log('command: ' + c.cmd);
                     // check user mode
-                    if (checkUserMode(message, c.mode)) {
+                    if (checkUserMode(message, from, c.mode)) {
                         c.callback(client, message, cmdArgs);
                     }
                 }
@@ -96,7 +97,7 @@ exports.init = function () {
                 if (cmd === c.cmd) {
                     console.log('command: ' + c.cmd);
                     // check user mode
-                    if (checkUserMode(message, c.mode)) {
+                    if (checkUserMode(message, from, c.mode)) {
                         c.callback(client, message, cmdArgs);
                     }
                 }
