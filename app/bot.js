@@ -7,7 +7,8 @@ var _ = require('underscore'),
 
 
 
-function isValidChannel(needle, haystack) {
+function isValidChannel(needle, arr) {
+    var haystack = arr;
     while(haystack.length > 0) {
         if(haystack.pop().indexOf(needle) >= 0)
             return true;
